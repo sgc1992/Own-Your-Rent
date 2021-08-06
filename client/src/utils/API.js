@@ -55,3 +55,18 @@ export const deleteBook = (bookId, token) => {
 export const searchGoogleBooks = (query) => {
   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 };
+
+
+export const searchApartment = (query) => {
+
+  return fetch(`https://api.domain.com.au/v1/listings/residential/_search`, {
+    method: 'POST',
+    headers: {
+        'X-API-KEY': 'key_6560423950b0c77523415807fa6a0e91',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(query)
+});
+};
+

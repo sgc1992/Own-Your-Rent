@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { saveBook, searchGoogleBooks,searchApartment } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
+
+  const [searchedApartments, setSearchedApartments] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -29,6 +31,30 @@ const SearchBooks = () => {
     }
 
     try {
+
+     const query = {
+      "listingType":"Sale",
+      "propertyTypes":[
+        "House",
+        "NewApartments"
+      ],
+      "minBedrooms":3,
+      "minBathrooms":2,
+      "minCarspaces":1,
+      "locations":[
+        {
+          "state":"NSW",
+          "region":"",
+          "area":"",
+          "suburb": searchInput,
+          "postCode":2090,
+          "includeSurroundingSuburbs":false
+        }
+      ]
+    }
+    console.log(query);
+      const apartmentresponse = await searchApartment(query);
+
       const response = await searchGoogleBooks(searchInput);
 
       if (!response.ok) {
@@ -36,6 +62,8 @@ const SearchBooks = () => {
       }
 
       const { items } = await response.json();
+      const  apartments  = await apartmentresponse.json();
+      setSearchedApartments(apartments);
 
       const bookData = items.map((book) => ({
         bookId: book.id,
@@ -84,6 +112,7 @@ const SearchBooks = () => {
         <Container>
           <h1>Enter your location</h1>
           <Form onSubmit={handleFormSubmit}>
+            {console.log(searchedApartments)}
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
