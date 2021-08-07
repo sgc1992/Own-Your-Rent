@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks,searchApartment } from '../utils/API';
+import { saveBook, searchGoogleBooks, searchApartment } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
 const SearchBooks = () => {
@@ -32,27 +32,27 @@ const SearchBooks = () => {
 
     try {
 
-     const query = {
-      "listingType":"Sale",
-      "propertyTypes":[
-        "House",
-        "NewApartments"
-      ],
-      "minBedrooms":3,
-      "minBathrooms":2,
-      "minCarspaces":1,
-      "locations":[
-        {
-          "state":"NSW",
-          "region":"",
-          "area":"",
-          "suburb": searchInput,
-          "postCode":2090,
-          "includeSurroundingSuburbs":false
-        }
-      ]
-    }
-    console.log(query);
+      const query = {
+        "listingType": "Sale",
+        "propertyTypes": [
+          "House",
+          "NewApartments"
+        ],
+        "minBedrooms": 3,
+        "minBathrooms": 2,
+        "minCarspaces": 1,
+        "locations": [
+          {
+            "state": "NSW",
+            "region": "",
+            "area": "",
+            "suburb": searchInput,
+            "postCode": 2090,
+            "includeSurroundingSuburbs": false
+          }
+        ]
+      }
+      console.log(query);
       const apartmentresponse = await searchApartment(query);
 
       const response = await searchGoogleBooks(searchInput);
@@ -62,7 +62,7 @@ const SearchBooks = () => {
       }
 
       const { items } = await response.json();
-      const  apartments  = await apartmentresponse.json();
+      const apartments = await apartmentresponse.json();
       setSearchedApartments(apartments);
 
       const bookData = items.map((book) => ({
@@ -72,6 +72,7 @@ const SearchBooks = () => {
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
+      
 
       setSearchedBooks(bookData);
       setSearchInput('');
@@ -112,6 +113,7 @@ const SearchBooks = () => {
         <Container>
           <h1>Enter your location</h1>
           <Form onSubmit={handleFormSubmit}>
+          {console.log(searchedBooks)}
             {console.log(searchedApartments)}
             <Form.Row>
               <Col xs={12} md={8}>
@@ -167,6 +169,41 @@ const SearchBooks = () => {
           })}
         </CardColumns>
       </Container>
+
+      <Container>
+        <h2>
+          {searchedApartments.length
+            ? `Viewing ${searchedApartments.length} results:`
+            : 'Search for your property'}
+        </h2>
+        <CardColumns>
+          {searchedApartments.map( (apartment) => {
+            return (
+              <Card key={apartment.type} border='dark'>
+                {/* {book.image ? (
+                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
+                ) : null}
+                {/* <Card.Body>
+                  <Card.Title>{book.title}</Card.Title>
+                  <p className='small'>Authors: {book.authors}</p>
+                  <Card.Text>{book.description}</Card.Text>
+                  {Auth.loggedIn() && (
+                    // <Button
+                    //   disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
+                    //   className='btn-block btn-info'
+                    //   onClick={() => handleSaveBook(book.bookId)}>
+                    //   {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
+                    //     ? 'This book has already been saved!'
+                    //     : 'Save this Book!'}
+                    // </Button>
+                  )}
+                </Card.Body> */} */}
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
+
     </>
   );
 };
