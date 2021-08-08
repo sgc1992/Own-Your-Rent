@@ -4,9 +4,10 @@ The user will be able to search the property for the particular location to inve
 
 ## Table of Contents
 - [User Story](#userstory)
+- [Business Context](#businesscontext)
 - [Functionality](#functionality)
-- [Acceptance Criteria](#acceptancecriteria)
 - [Technology Used](#technologyused)
+- [Deployed Link](#deployedlink)
 - [Screenshot](#screenshot)
 
 
@@ -14,6 +15,9 @@ The user will be able to search the property for the particular location to inve
 
 * AS AN tenant
 I WANT to be able to search property to rent.
+* When I pay my rent
+Portion of my rent will go towards owning the share of the property
+
 
 ## Business Context
 
@@ -36,5 +40,9 @@ Tenant who pay their weekly rent can get an opportunity to own the share of that
 * MongoDB and the Mongoose ODM for the database.
 
 * Heroku (with data).
+
+## Deployed Link
+
+https://powerful-brook-94694.herokuapp.com/
 
 ## Screenshot![](./screenshot.PNG "Description goes here")

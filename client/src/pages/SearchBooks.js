@@ -191,7 +191,7 @@ const SearchBooks = () => {
         <CardColumns>
           {searchedApartments.map((apartment) => {
             return (
-              <Card key={apartment.media} border='dark'>
+              <Card key={apartment} border='dark'>
 
 
                 <Card.Body>
