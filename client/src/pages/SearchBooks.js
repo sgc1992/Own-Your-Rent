@@ -74,20 +74,17 @@ const SearchBooks = () => {
       }));
 
 
-      // const apartmentData = items.map((apartment) => ({
-        
-      // //   bookId: book.id,
-      // listing: apartment.listingType,
-      //   image: book.volumeInfo.imageLinks?.thumbnail || ''
+      const apartmentData = items.map((apartment) => ({
+        // listingName:apartment.
+        // auctionSchedule:apartment.
 
+        media: apartment.media,
+        // priceDetails:apartment.
+        // propertyDetails:apartment.
 
-      // //   authors: book.volumeInfo.authors || ['No author to display'],
-      // //   title: book.volumeInfo.title,
-      // //   description: book.volumeInfo.description,
-      // //   image: book.volumeInfo.imageLinks?.thumbnail || '',
-      // }));
-      // console.log(apartmentData);
-      
+      }));
+      console.log(apartmentData);
+
 
       setSearchedBooks(bookData);
       setSearchInput('');
@@ -128,7 +125,7 @@ const SearchBooks = () => {
         <Container>
           <h1>Enter your location</h1>
           <Form onSubmit={handleFormSubmit}>
-          {console.log(searchedBooks)}
+            {console.log(searchedBooks)}
             {console.log(searchedApartments)}
             <Form.Row>
               <Col xs={12} md={8}>
@@ -185,7 +182,26 @@ const SearchBooks = () => {
         </CardColumns>
       </Container>
 
-      
+      <Container>
+        <h2>
+          {searchedApartments.length
+            ? `Viewing ${searchedApartments.length} results:`
+            : 'Search for your property'}
+        </h2>
+        <CardColumns>
+          {searchedApartments.map((apartment) => {
+            return (
+              <Card key={apartment.media} border='dark'>
+
+
+                <Card.Body>
+
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </CardColumns>
+      </Container>
 
     </>
   );
