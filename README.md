@@ -1,7 +1,3 @@
-# Summary
-The user will be able to search the property for the particular location to invest.
-
-
 ## Table of Contents
 - [User Story](#userstory)
 - [Business Context](#businesscontext)
