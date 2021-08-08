@@ -72,6 +72,21 @@ const SearchBooks = () => {
         description: book.volumeInfo.description,
         image: book.volumeInfo.imageLinks?.thumbnail || '',
       }));
+
+
+      // const apartmentData = items.map((apartment) => ({
+        
+      // //   bookId: book.id,
+      // listing: apartment.listingType,
+      //   image: book.volumeInfo.imageLinks?.thumbnail || ''
+
+
+      // //   authors: book.volumeInfo.authors || ['No author to display'],
+      // //   title: book.volumeInfo.title,
+      // //   description: book.volumeInfo.description,
+      // //   image: book.volumeInfo.imageLinks?.thumbnail || '',
+      // }));
+      // console.log(apartmentData);
       
 
       setSearchedBooks(bookData);
@@ -170,39 +185,7 @@ const SearchBooks = () => {
         </CardColumns>
       </Container>
 
-      <Container>
-        <h2>
-          {searchedApartments.length
-            ? `Viewing ${searchedApartments.length} results:`
-            : 'Search for your property'}
-        </h2>
-        <CardColumns>
-          {searchedApartments.map( (apartment) => {
-            return (
-              <Card key={apartment.type} border='dark'>
-                {/* {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
-                ) : null}
-                {/* <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    // <Button
-                    //   disabled={savedBookIds?.some((savedBookId) => savedBookId === book.bookId)}
-                    //   className='btn-block btn-info'
-                    //   onClick={() => handleSaveBook(book.bookId)}>
-                    //   {savedBookIds?.some((savedBookId) => savedBookId === book.bookId)
-                    //     ? 'This book has already been saved!'
-                    //     : 'Save this Book!'}
-                    // </Button>
-                  )}
-                </Card.Body> */} */}
-              </Card>
-            );
-          })}
-        </CardColumns>
-      </Container>
+      
 
     </>
   );
