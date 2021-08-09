@@ -47,7 +47,7 @@ const SearchBooks = () => {
             "region": "",
             "area": "",
             "suburb": searchInput,
-            "postCode": 2090,
+            "postCode": 2095,
             "includeSurroundingSuburbs": false
           }
         ]
@@ -162,11 +162,12 @@ const SearchBooks = () => {
             return (
               <Card  border='dark'>
                 <p>{apartment.listing.advertiser.name}</p>
+                <p>{apartment.listing.listingType}</p>
                 <p>{apartment.listing.priceDetails.displayPrice}</p>
                 <p>{apartment.listing.propertyDetails.state}</p>
                 {/* <img src={apartment.listing.media[0].url}/> */}
 
-                <Card.Title>{apartment.imageUrl}</Card.Title>
+                
 
 
 
