@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 
@@ -92,16 +92,18 @@ const SearchApartment = () => {
             console.log(apartment);
             return (
               <Card border='dark'>
-                <p>{apartment.listing.advertiser.name}</p>
-                <p>{apartment.listing.listingType}</p>
-                <p>{apartment.listing.priceDetails.displayPrice}</p>
-                <p>{apartment.listing.propertyDetails.state}</p>
-                {/* <img src={apartment.listing.media[0].url}/> */}
+                <p>Agency: {apartment.listing.advertiser.name}</p>
+                <p>Listingtype: {apartment.listing.listingType}</p>
+                <p>Price: {apartment.listing.priceDetails.displayPrice}</p>
+                <p>Property Details: {apartment.listing.propertyDetails.state}</p>
+                
               </Card>
             );
           })}
         </CardColumns>
       </Container>
+
+      
 
     </>
   );
