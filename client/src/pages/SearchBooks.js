@@ -77,8 +77,9 @@ const SearchBooks = () => {
       const apartmentData = items.map((apartment) => ({
         // listingName:apartment.
         // auctionSchedule:apartment.
+        
 
-        media: apartment.media,
+        // imageUrl: apartment.listing.media[0].url,
         // priceDetails:apartment.
         // propertyDetails:apartment.
 
@@ -190,8 +191,17 @@ const SearchBooks = () => {
         </h2>
         <CardColumns>
           {searchedApartments.map((apartment) => {
+            console.log(apartment);
             return (
-              <Card key={apartment} border='dark'>
+              <Card  border='dark'>
+                <p>{apartment.listing.advertiser.name}</p>
+                <p>{apartment.listing.priceDetails.displayPrice}</p>
+                <p>{apartment.listing.propertyDetails.state}</p>
+                {/* <img src={apartment.listing.media[0].url}/> */}
+
+                <Card.Title>{apartment.imageUrl}</Card.Title>
+
+
 
 
                 <Card.Body>
