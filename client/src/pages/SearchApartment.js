@@ -56,7 +56,7 @@ const SearchApartment = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Enter your location</h1>
+          <h1>Enter your location by postcode</h1>
           <Form onSubmit={handleFormSubmit}>
             {console.log(searchedApartments)}
             <Form.Row>
