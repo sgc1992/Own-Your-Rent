@@ -67,7 +67,7 @@ const SearchApartment = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='enter your location'
+                  placeholder='enter your location by postcode'
                 />
               </Col>
               <Col xs={12} md={4}>
