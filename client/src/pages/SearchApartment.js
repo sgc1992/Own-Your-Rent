@@ -33,8 +33,8 @@ const SearchApartment = () => {
             "state": "NSW",
             "region": "",
             "area": "",
-            "suburb": searchInput,
-            "postCode": 2095,
+            "suburb": "",
+            "postCode": searchInput,
             "includeSurroundingSuburbs": false
           }
         ]
@@ -84,20 +84,21 @@ const SearchApartment = () => {
       <Container>
         <h2>
           {searchedApartments.length
-            ? `Viewing ${searchedApartments.length} results:`
+            ? `Viewing ${searchedApartments.filter(apartment=>apartment.listing).length} results:`
             : 'Search for your property'}
         </h2>
         <CardColumns>
           {searchedApartments.map((apartment) => {
             console.log(apartment);
-            return (
-              <Card border='dark'>
-                <p>Agency: {apartment.listing.advertiser.name}</p>
-                <p>Listingtype: {apartment.listing.listingType}</p>
-                <p>Price: {apartment.listing.priceDetails.displayPrice}</p>
-                <p>Property Details: {apartment.listing.propertyDetails.state}</p>
-                
-              </Card>
+            return (apartment.listing ?   <Card border='dark'>
+            <p>Agency: { apartment.listing ?  apartment.listing.advertiser.name:""}</p>
+            <p>Listingtype: {apartment.listing ?apartment.listing.listingType:""}</p>
+            <p>Price: {apartment.listing ?apartment.listing.priceDetails.displayPrice:""}</p>
+            <p>Property Details: {apartment.listing ?apartment.listing.propertyDetails.state:""}</p>
+            <p>Property Media: <img className="w-100" src ={apartment.listing ?apartment.listing.media[0].url   :""} /> </p>
+            
+          </Card>: ""
+            
             );
           })}
         </CardColumns>

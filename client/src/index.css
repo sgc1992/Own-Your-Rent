@@ -15,3 +15,7 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
+div.text-light.bg-dark.jumbotron.jumbotron-fluid.bg-dark {
+  background-color: grey !important;
+}
